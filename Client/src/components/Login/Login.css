@@ -1,0 +1,106 @@
+/* Login.css */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+form {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.input-box svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #777;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #4285f4; /* Google Blue */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px; /* Add spacing between the buttons */
+}
+
+.google-btn:hover {
+  background-color: #1a73e8; /* Google Dark Blue */
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #0056b3;
+}

@@ -1,0 +1,38 @@
+/* src/components/NavigationBar.css */
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333; /* You can customize the background color */
+  padding: 10px; /* Adjust the padding according to your design */
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around; /* Adjust the space between items */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: white; /* You can customize the text color */
+  font-weight: bold;
+  padding: 8px 12px; /* Adjust padding for each item */
+  border-radius: 5px; /* Optional: Add some border-radius for a rounded look */
+  transition: background-color 0.3s ease; /* Optional: Add a smooth transition effect */
+}
+
+.nav-item a:hover {
+  background-color: #555; /* Optional: Change the background color on hover */
+}
+
+/* Add more styles as needed */
