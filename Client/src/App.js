@@ -37,8 +37,6 @@ function App() {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/receipts" element={<Receipts />} />
       </Routes>
-
-      <NavigationBar />
     </Router>
   );
 }

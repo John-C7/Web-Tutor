@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Chatbot.css";
+import Layout from "../Layout";
 const BotResponses = [
   {
     response_type: "greeting",
@@ -198,18 +199,20 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="container">
-      <div className="chatbot">
-        <strong>Bot:</strong> {botResponse}
-        <form className="chatbot-form" onSubmit={handleSubmit}>
-          <label>
-            <strong>You:</strong>{" "}
-            <input type="text" value={userInput} onChange={handleUserInput} />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+    <Layout>
+      <div className="container">
+        <div className="chatbot">
+          <strong>Bot:</strong> {botResponse}
+          <form className="chatbot-form" onSubmit={handleSubmit}>
+            <label>
+              <strong>You:</strong>{" "}
+              <input type="text" value={userInput} onChange={handleUserInput} />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

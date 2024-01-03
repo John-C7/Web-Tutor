@@ -1,6 +1,7 @@
 // src/components/Assignments.js
 import React from "react";
 import "./Assignments.css"; // Make sure to adjust the path based on your folder structure
+import Layout from "../Layout";
 
 const assignmentsData = [
   {
@@ -23,21 +24,23 @@ const assignmentsData = [
 
 const Assignments = () => {
   return (
-    <div className="assignments-container">
-      <h2>Assignments</h2>
-      <div className="assignments-list">
-        {assignmentsData.map((assignment) => (
-          <div key={assignment.id} className="assignment-card">
-            <h3>{assignment.title}</h3>
-            <p>{assignment.description}</p>
-            <div className="assignment-details">
-              <span>Due Date: {assignment.dueDate}</span>
-              <span>Status: {assignment.status}</span>
+    <Layout>
+      <div className="assignments-container">
+        <h2>Assignments</h2>
+        <div className="assignments-list">
+          {assignmentsData.map((assignment) => (
+            <div key={assignment.id} className="assignment-card">
+              <h3>{assignment.title}</h3>
+              <p>{assignment.description}</p>
+              <div className="assignment-details">
+                <span>Due Date: {assignment.dueDate}</span>
+                <span>Status: {assignment.status}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

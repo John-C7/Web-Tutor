@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Chart from "chart.js/auto";
 import "./student_dashboard.css";
+import Layout from "../Layout";
 
 function StudentDashboard() {
   const [gradingData, setGradingData] = useState([]);
@@ -90,47 +91,49 @@ function StudentDashboard() {
   }, [assignmentSubmissionPercentage]);
 
   return (
-    <div className="student-dashboard">
-      <header>
-        <h1>Student Dashboard</h1>
-      </header>
+    <Layout>
+      <div className="student-dashboard">
+        <header>
+          <h1>Student Dashboard</h1>
+        </header>
 
-      <section className="user-info">
-        <h2>John Doe</h2>
-      </section>
+        <section className="user-info">
+          <h2>John Doe</h2>
+        </section>
 
-      <section className="flex-boxes">
-        <div className="flex-box attendance-record">
-          <h3>Attendance Record</h3>
-          <p>Present: 20</p>
-          <p>Absent: 5</p>
-          <canvas id="attendanceChart" width="100" height="100"></canvas>
-        </div>
-        <div className="flex-box grading-chart">
-          <h3>Grading</h3>
-          <canvas id="gradingChart" width="100" height="100"></canvas>
-        </div>
-        <div className="flex-box assignment-submission-chart">
-          <h3>Assignment Submission</h3>
-          <canvas
-            id="assignmentSubmissionChart"
-            width="100"
-            height="100"
-          ></canvas>
-        </div>
-        <div className="flex-box feedback-section">
-          <h3>Send Feedback</h3>
-          <button
-            onClick={() =>
-              (window.location.href =
-                "https://docs.google.com/forms/d/e/1FAIpQLSc3S2q98hb4jeqeyuAWp_UpOuK6uPdouSiIjhELWws8tv4KXA/viewform")
-            }
-          >
-            Fill Feedback Form
-          </button>
-        </div>
-      </section>
-    </div>
+        <section className="flex-boxes">
+          <div className="flex-box attendance-record">
+            <h3>Attendance Record</h3>
+            <p>Present: 20</p>
+            <p>Absent: 5</p>
+            <canvas id="attendanceChart" width="100" height="100"></canvas>
+          </div>
+          <div className="flex-box grading-chart">
+            <h3>Grading</h3>
+            <canvas id="gradingChart" width="100" height="100"></canvas>
+          </div>
+          <div className="flex-box assignment-submission-chart">
+            <h3>Assignment Submission</h3>
+            <canvas
+              id="assignmentSubmissionChart"
+              width="100"
+              height="100"
+            ></canvas>
+          </div>
+          <div className="flex-box feedback-section">
+            <h3>Send Feedback</h3>
+            <button
+              onClick={() =>
+                (window.location.href =
+                  "https://docs.google.com/forms/d/e/1FAIpQLSc3S2q98hb4jeqeyuAWp_UpOuK6uPdouSiIjhELWws8tv4KXA/viewform")
+              }
+            >
+              Fill Feedback Form
+            </button>
+          </div>
+        </section>
+      </div>
+    </Layout>
   );
 }
 

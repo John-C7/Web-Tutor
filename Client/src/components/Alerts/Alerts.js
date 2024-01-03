@@ -2,12 +2,14 @@
 import "./Alerts.css";
 import React from "react";
 import Countdown from "./Countdown";
-import NavigationBar from "../NavigationBar/NavigationBar";
+import Layout from "../Layout";
 function Alerts() {
   return (
-    <div className="Alerts">
-      <Countdown />
-    </div>
+    <Layout>
+      <div className="Alerts">
+        <Countdown />
+      </div>
+    </Layout>
   );
 }
 

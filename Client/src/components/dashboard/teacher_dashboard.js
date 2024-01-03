@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Layout from "../Layout";
 // import './student_dashboard';  // Remove this line if not needed
 
 function TeacherDashboard() {
@@ -211,144 +212,153 @@ function TeacherDashboard() {
   };
 
   return (
-    <div className="teacher-dashboard">
-      <header>
-        <h1>Teacher Dashboard</h1>
-        <button className="dropdown-toggle" onClick={toggleDropdown}>
-          <span className="dot">•</span>
-          <span className="dot">•</span>
-          <span className="dot">•</span>
-        </button>
-        <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
-          <li onClick={() => handleMenuItemClick("Assignment")}>Assignment</li>
-          <li onClick={() => handleMenuItemClick("Settings")}>Settings</li>
-          <li onClick={() => handleMenuItemClick("Schedule")}>Schedule</li>
-          <li onClick={() => handleMenuItemClick("Account")}>Account</li>
-          <li onClick={() => handleMenuItemClick("students list")}>
-            Students List
-          </li>
-        </ul>
-      </header>
+    <Layout>
+      <div className="teacher-dashboard">
+        <header>
+          <h1>Teacher Dashboard</h1>
+          <button className="dropdown-toggle" onClick={toggleDropdown}>
+            <span className="dot">•</span>
+            <span className="dot">•</span>
+            <span className="dot">•</span>
+          </button>
+          <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
+            <li onClick={() => handleMenuItemClick("Assignment")}>
+              Assignment
+            </li>
+            <li onClick={() => handleMenuItemClick("Settings")}>Settings</li>
+            <li onClick={() => handleMenuItemClick("Schedule")}>Schedule</li>
+            <li onClick={() => handleMenuItemClick("Account")}>Account</li>
+            <li onClick={() => handleMenuItemClick("students list")}>
+              Students List
+            </li>
+          </ul>
+        </header>
 
-      <section className="user-info">
-        <h2>Teacher name</h2>
-      </section>
+        <section className="user-info">
+          <h2>Teacher name</h2>
+        </section>
 
-      <section className="flex-boxes">
-        <div className="flex-box attendance-record">
-          <h3>Student List</h3>
-          <li>John</li>
-          <li>Richards</li>
-          <li>Mike</li>
-        </div>
-      </section>
+        <section className="flex-boxes">
+          <div className="flex-box attendance-record">
+            <h3>Student List</h3>
+            <li>John</li>
+            <li>Richards</li>
+            <li>Mike</li>
+          </div>
+        </section>
 
-      {/* "Create a Class" Form */}
-      <section className="create-class-form">
-        <h3>Create a Class</h3>
-        <form onSubmit={handleCreateClass}>
-          <label>
-            Select Student:
-            <select value={selectedStudent} onChange={handleSelectChange}>
-              <option value="">Select a student</option>
-              {students.map((student, index) => (
-                <option key={index} value={student}>
-                  {student}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Google Meet Link:
-            <input
-              type="text"
-              value={meetLink}
-              onChange={(e) => setMeetLink(e.target.value)}
-            />
-          </label>
-          <label>
-            Start Time:
-            <input
-              type="datetime-local"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-            />
-          </label>
-          <label>
-            End Time:
-            <input
-              type="datetime-local"
-              value={endTime}
-              onChange={(e) => setEndTime(e.target.value)}
-            />
-          </label>
-          <button type="submit">Create Class</button>
-        </form>
-      </section>
+        {/* "Create a Class" Form */}
+        <section className="create-class-form">
+          <h3>Create a Class</h3>
+          <form onSubmit={handleCreateClass}>
+            <label>
+              Select Student:
+              <select value={selectedStudent} onChange={handleSelectChange}>
+                <option value="">Select a student</option>
+                {students.map((student, index) => (
+                  <option key={index} value={student}>
+                    {student}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Google Meet Link:
+              <input
+                type="text"
+                value={meetLink}
+                onChange={(e) => setMeetLink(e.target.value)}
+              />
+            </label>
+            <label>
+              Start Time:
+              <input
+                type="datetime-local"
+                value={startTime}
+                onChange={(e) => setStartTime(e.target.value)}
+              />
+            </label>
+            <label>
+              End Time:
+              <input
+                type="datetime-local"
+                value={endTime}
+                onChange={(e) => setEndTime(e.target.value)}
+              />
+            </label>
+            <button type="submit">Create Class</button>
+          </form>
+        </section>
 
-      <div className="flex-box feedback-section">
+        <div className="flex-box feedback-section">
           <h3>Send Feedback</h3>
-          <button onClick={() => (window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSdl8slH60xb7lYaQ4xYQx_TXA0DJH_HNZgGAMwftLbxmjAjYw/viewform?usp=sf_link')}>
+          <button
+            onClick={() =>
+              (window.location.href =
+                "https://docs.google.com/forms/d/e/1FAIpQLSdl8slH60xb7lYaQ4xYQx_TXA0DJH_HNZgGAMwftLbxmjAjYw/viewform?usp=sf_link")
+            }
+          >
             Fill Feedback Form
           </button>
         </div>
 
-      <section className="upcoming-classes">
-        <h3>Classes</h3>
-        {createdClasses.map((createdClass, index) => (
-          <div
-            key={index}
-            className={`class-card ${
-              attendanceStatus[index] ? "attended" : ""
-            }`}
-          >
-            <p>Student: {createdClass.student}</p>
-            <p>Subject: {createdClass.subject}</p>
-            <p>
-              Meet Link:{" "}
-              <a href={createdClass.meetLink}>{createdClass.meetLink}</a>
-            </p>
-            <p>Start Time: {createdClass.startTime}</p>
-            <p>End Time: {createdClass.endTime}</p>
-            <div className="attendance-section">
-              <span>Attendance:</span>
-              <button
-                onClick={() => handleToggleAttendance(index)}
-                className={`attendance-status-button ${
-                  attendanceStatus[index] ? "attended" : ""
-                }`}
-                style={{
-                  backgroundColor: attendanceStatus[index] ? "green" : "",
-                }}
-              >
-                Present
-              </button>
-              <button
-                onClick={() => handleToggleAttendance(index)}
-                className={`attendance-status-button ${
-                  attendanceStatus[index] === false ? "attended" : ""
-                }`}
-                style={{
-                  backgroundColor:
-                    attendanceStatus[index] === false ? "red" : "",
-                }}
-              >
-                Absent
-              </button>
-            </div>
-
-            <button
-              onClick={() => handleCancelClass(createdClass)}
-              className={`cancel-button ${
+        <section className="upcoming-classes">
+          <h3>Classes</h3>
+          {createdClasses.map((createdClass, index) => (
+            <div
+              key={index}
+              className={`class-card ${
                 attendanceStatus[index] ? "attended" : ""
               }`}
             >
-              Cancel
-            </button>
-          </div>
-        ))}
-      </section>
-    </div>
+              <p>Student: {createdClass.student}</p>
+              <p>Subject: {createdClass.subject}</p>
+              <p>
+                Meet Link:{" "}
+                <a href={createdClass.meetLink}>{createdClass.meetLink}</a>
+              </p>
+              <p>Start Time: {createdClass.startTime}</p>
+              <p>End Time: {createdClass.endTime}</p>
+              <div className="attendance-section">
+                <span>Attendance:</span>
+                <button
+                  onClick={() => handleToggleAttendance(index)}
+                  className={`attendance-status-button ${
+                    attendanceStatus[index] ? "attended" : ""
+                  }`}
+                  style={{
+                    backgroundColor: attendanceStatus[index] ? "green" : "",
+                  }}
+                >
+                  Present
+                </button>
+                <button
+                  onClick={() => handleToggleAttendance(index)}
+                  className={`attendance-status-button ${
+                    attendanceStatus[index] === false ? "attended" : ""
+                  }`}
+                  style={{
+                    backgroundColor:
+                      attendanceStatus[index] === false ? "red" : "",
+                  }}
+                >
+                  Absent
+                </button>
+              </div>
+
+              <button
+                onClick={() => handleCancelClass(createdClass)}
+                className={`cancel-button ${
+                  attendanceStatus[index] ? "attended" : ""
+                }`}
+              >
+                Cancel
+              </button>
+            </div>
+          ))}
+        </section>
+      </div>
+    </Layout>
   );
 }
 

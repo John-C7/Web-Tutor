@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaFilePdf } from "react-icons/fa";
 import "./Notes.css";
+import Layout from "../Layout";
 
 const hardcodedData = {
   subjects: [
@@ -77,65 +78,67 @@ const Notes = () => {
   };
 
   return (
-    <div className="notes-container">
-      <h2>Notes</h2>
-      <input
-        type="file"
-        accept=".pdf"
-        onChange={handleFileUpload}
-        ref={(input) => setFileInput(input)}
-        style={{ display: "none" }}
-      />
-      <button onClick={() => fileInput.click()}>Upload Notes</button>
+    <Layout>
+      <div className="notes-container">
+        <h2>Notes</h2>
+        <input
+          type="file"
+          accept=".pdf"
+          onChange={handleFileUpload}
+          ref={(input) => setFileInput(input)}
+          style={{ display: "none" }}
+        />
+        <button onClick={() => fileInput.click()}>Upload Notes</button>
 
-      {[
-        ...fetchedNotes,
-        ...uploadedNotes.map((uploadedNote) => ({
-          // Map the uploaded notes to have a similar structure to fetchedNotes
-          name: "Science",
-          teacher: "Prof. Nagraj", // You may customize this as needed
-          chapters: [
-            {
-              name: "Bio", // You may customize this as needed
-              resources: [
-                {
-                  type: uploadedNote.noteTitle, // You may customize this as needed
-                  file: uploadedNote.noteLink,
-                },
-              ],
-            },
-          ],
-        })),
-      ].map((subject, subjectIndex) => (
-        <div key={subjectIndex} className="note-card">
-          <div className="note-header">
-            <h3>{subject.name || "Notes"}</h3>
-            <p>{`Teacher: ${subject.teacher || "Prof. Nagraj"}`}</p>
-            {subject.chapters &&
-              subject.chapters.map((chapter, chapterIndex) => (
-                <div key={chapterIndex}>
-                  <p>{`Chapter: ${chapter.name || "CO"}`}</p>
-                  {chapter.resources &&
-                    chapter.resources.map((resource, resourceIndex) => (
-                      <div key={resourceIndex} className="note-details">
-                        <span>{resource.type}</span>
-                        <a
-                          href={resource.file}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          download
-                        >
-                          <FaFilePdf className="pdf-icon" />
-                          Download PDF
-                        </a>
-                      </div>
-                    ))}
-                </div>
-              ))}
+        {[
+          ...fetchedNotes,
+          ...uploadedNotes.map((uploadedNote) => ({
+            // Map the uploaded notes to have a similar structure to fetchedNotes
+            name: "Science",
+            teacher: "Prof. Nagraj", // You may customize this as needed
+            chapters: [
+              {
+                name: "Bio", // You may customize this as needed
+                resources: [
+                  {
+                    type: uploadedNote.noteTitle, // You may customize this as needed
+                    file: uploadedNote.noteLink,
+                  },
+                ],
+              },
+            ],
+          })),
+        ].map((subject, subjectIndex) => (
+          <div key={subjectIndex} className="note-card">
+            <div className="note-header">
+              <h3>{subject.name || "Notes"}</h3>
+              <p>{`Teacher: ${subject.teacher || "Prof. Nagraj"}`}</p>
+              {subject.chapters &&
+                subject.chapters.map((chapter, chapterIndex) => (
+                  <div key={chapterIndex}>
+                    <p>{`Chapter: ${chapter.name || "CO"}`}</p>
+                    {chapter.resources &&
+                      chapter.resources.map((resource, resourceIndex) => (
+                        <div key={resourceIndex} className="note-details">
+                          <span>{resource.type}</span>
+                          <a
+                            href={resource.file}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            download
+                          >
+                            <FaFilePdf className="pdf-icon" />
+                            Download PDF
+                          </a>
+                        </div>
+                      ))}
+                  </div>
+                ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Layout>
   );
 };
 

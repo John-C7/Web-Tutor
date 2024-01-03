@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./admin_dashboard.css"; // You can create a separate CSS file for styling
 import Chart from "chart.js/auto";
+import Layout from "../Layout";
 function AdminDashboard() {
   const [teachersData, setTeachersData] = useState([]);
 
@@ -82,48 +83,50 @@ function AdminDashboard() {
   };
 
   return (
-    <div className="admin-dashboard">
-      <header>
-        <h1>Admin Dashboard</h1>
-      </header>
+    <Layout>
+      <div className="admin-dashboard">
+        <header>
+          <h1>Admin Dashboard</h1>
+        </header>
 
-      <section className="flex-boxes">
-        <div className="flex-box students-per-teacher-chart">
-          <h3>Students per Teacher</h3>
-          <canvas
-            id="studentsPerTeacherChart"
-            width="100"
-            height="100"
-          ></canvas>
-        </div>
-        <div className="flex-box average-grade-per-teacher-chart">
-          <h3>Average Grade per Teacher</h3>
-          <canvas
-            id="averageGradePerTeacherChart"
-            width="100"
-            height="100"
-          ></canvas>
-        </div>
-      </section>
+        <section className="flex-boxes">
+          <div className="flex-box students-per-teacher-chart">
+            <h3>Students per Teacher</h3>
+            <canvas
+              id="studentsPerTeacherChart"
+              width="100"
+              height="100"
+            ></canvas>
+          </div>
+          <div className="flex-box average-grade-per-teacher-chart">
+            <h3>Average Grade per Teacher</h3>
+            <canvas
+              id="averageGradePerTeacherChart"
+              width="100"
+              height="100"
+            ></canvas>
+          </div>
+        </section>
 
-      <section className="teacher-calendar">
-        <h3>Teacher Calendars</h3>
-        <ul>
-          {teachersData.map((teacher) => (
-            <li key={teacher.name}>
-              {teacher.name}{" "}
-              <button
-                onClick={() =>
-                  handleCalendarButtonClick(teacher.name, teacher.calendarId)
-                }
-              >
-                Open Calendar
-              </button>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </div>
+        <section className="teacher-calendar">
+          <h3>Teacher Calendars</h3>
+          <ul>
+            {teachersData.map((teacher) => (
+              <li key={teacher.name}>
+                {teacher.name}{" "}
+                <button
+                  onClick={() =>
+                    handleCalendarButtonClick(teacher.name, teacher.calendarId)
+                  }
+                >
+                  Open Calendar
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </Layout>
   );
 }
 
